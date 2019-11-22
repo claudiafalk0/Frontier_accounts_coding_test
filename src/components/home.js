@@ -6,9 +6,13 @@ import "./home.css";
 //things still to do:
 //change phone number format to (###) ###-####
 //change date format to ##/##/####
+ //----in order to do both of these I will need to add a class to the phone number and the date and use jQuery with a regular expression to format them accordingly
 //change amout due format to $##.##
+//-----probably similar to above with a regular expression. I currently have the .## formatted with toFixed, but I'm trying to avoid the floatingPoint errors that can occur
 //hide empty due date for inactive accounts
+//-----I know I could simply remove the due date from the inactive list, but that's not within best coding standards. So I'd like to write a function which would read if PaymentDueDate === null then .hide the due date li 
 //add key prop to new arrays
+// -----I need a unique key for the li elements. Under normal circumstances I would separate the li from the map, and attach the key in the return statement when I call for the li element, however because I built the li inside the render, I will need to research how to add the key inside the map. 
 
 let overdueAccts = [];
 let inactiveAccts = [];
@@ -72,13 +76,13 @@ export default class Home extends Component {
                                     {/* if AccountStatusID === 2, display here */}
                                 </div>
                                 <div className="account-container overdue-account">
-                                    <ul className="account-data-list">
+                                    <ul key= "activeAccounts" className="account-data-list">
                                         {activeAccts.map(function(elem) {
-                                            return <> <li key={elem.id}> <label>Name:</label>  {elem.LastName}, {elem.FirstName} </li>
-                                             <li key={elem.id}> <label>Email:</label> {elem.Email}</li>
-                                            <li key={elem.id}> <label>Phone Number:</label> {elem.PhoneNumber}</li>
-                                            <li key={elem.id}> <label>Amount Due:</label>{elem.AmountDue.toFixed(2)}</li>
-                                            <li key={elem.id}> <label>Due Date:</label>{elem.PaymentDueDate}</li>
+                                            return <> <li> <label>Name:</label>  {elem.LastName}, {elem.FirstName} </li>
+                                             <li> <label>Email:</label> {elem.Email}</li>
+                                            <li> <label>Phone Number:</label> {elem.PhoneNumber}</li>
+                                            <li> <label>Amount Due:</label>{elem.AmountDue.toFixed(2)}</li>
+                                            <li> <label>Due Date:</label>{elem.PaymentDueDate}</li>
                                             </>
                                         })}
                                     </ul>
@@ -91,13 +95,13 @@ export default class Home extends Component {
                                     {/* if AccountStatusID === 2, display here */}
                                 </div>
                                 <div className="account-container overdue-account">
-                                    <ul className="account-data-list">
+                                    <ul  className="account-data-list">
                                     {overdueAccts.map(function(elem) {
-                                             return <> <li key={elem.id}> <label>Name:</label>  {elem.LastName}, {elem.FirstName} </li>
-                                             <li key={elem.id}> <label>Email:</label> {elem.Email}</li>
-                                            <li key={elem.id}> <label>Phone Number:</label> {elem.PhoneNumber}</li>
-                                            <li key={elem.id}> <label>Amount Due:</label>{elem.AmountDue.toFixed(2)}</li>
-                                            <li key={elem.id}> <label>Due Date:</label>{elem.PaymentDueDate}</li>
+                                             return <> <li > <label>Name:</label>  {elem.LastName}, {elem.FirstName} </li>
+                                             <li> <label>Email:</label> {elem.Email}</li>
+                                            <li> <label>Phone Number:</label> {elem.PhoneNumber}</li>
+                                            <li> <label>Amount Due:</label>{elem.AmountDue.toFixed(2)}</li>
+                                            <li> <label>Due Date:</label>{elem.PaymentDueDate}</li>
                                             </>
                                         })}
                                     </ul>
@@ -109,13 +113,13 @@ export default class Home extends Component {
                                     {/* if AccountStatusID === 0, display here */}
                                 </div>
                                 <div className="account-container inactive-account">
-                                    <ul className="account-data-list">
+                                    <ul key="inactiveAccounts" className="account-data-list">
                                     {inactiveAccts.map(function(elem) {
-                                             return <> <li key={elem.id}> <label>Name:</label>  {elem.LastName}, {elem.FirstName} </li>
-                                             <li key={elem.id}> <label>Email:</label> {elem.Email}</li>
-                                            <li key={elem.id}> <label>Phone Number:</label> {elem.PhoneNumber}</li>
-                                            <li key={elem.id}> <label>Amount Due:</label>{elem.AmountDue.toFixed(2)}</li>
-                                            <li key={elem.id}> <label>Due Date:</label>{elem.PaymentDueDate}</li>
+                                             return <> <li> <label>Name:</label>  {elem.LastName}, {elem.FirstName} </li>
+                                             <li> <label>Email:</label> {elem.Email}</li>
+                                            <li> <label>Phone Number:</label> {elem.PhoneNumber}</li>
+                                            <li> <label>Amount Due:</label>{elem.AmountDue.toFixed(2)}</li>
+                                            <li> <label>Due Date:</label>{elem.PaymentDueDate}</li>
                                             </>
                                         })}
                                     </ul>
