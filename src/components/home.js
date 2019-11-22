@@ -3,15 +3,12 @@ import axios from 'axios';
 import "./home.css";
 
 
-// const Accounts = props => (
-//     <ul className="account-data-list">
-//         <li><label>Name:</label>{props.account.LastName}, {props.account.FirstName}</li>
-//         <li><label>Email:</label>{props.account.Email}</li>
-//         <li><label>Phone Number:</label>{props.account.PhoneNumber}</li>
-//         <li><label>Amount Due:</label>{props.account.AmountDue}</li>
-//         <li><label>Due Date:</label>{props.account.DueDate}</li>
-//     </ul>
-// )
+//things still to do:
+//change phone number format to (###) ###-####
+//change date format to ##/##/####
+//change amout due format to $##.##
+//hide empty due date for inactive accounts
+//add key prop to new arrays
 
 let overdueAccts = [];
 let inactiveAccts = [];
@@ -80,8 +77,8 @@ export default class Home extends Component {
                                             return <> <li key={elem.id}> <label>Name:</label>  {elem.LastName}, {elem.FirstName} </li>
                                              <li key={elem.id}> <label>Email:</label> {elem.Email}</li>
                                             <li key={elem.id}> <label>Phone Number:</label> {elem.PhoneNumber}</li>
-                                            <li key={elem.id}> <label>Amount Due:</label>{elem.AmountDue}</li>
-                                            <li key={elem.id}> <label>Due Date:</label>{elem.DueDate}</li>
+                                            <li key={elem.id}> <label>Amount Due:</label>{elem.AmountDue.toFixed(2)}</li>
+                                            <li key={elem.id}> <label>Due Date:</label>{elem.PaymentDueDate}</li>
                                             </>
                                         })}
                                     </ul>
@@ -99,8 +96,8 @@ export default class Home extends Component {
                                              return <> <li key={elem.id}> <label>Name:</label>  {elem.LastName}, {elem.FirstName} </li>
                                              <li key={elem.id}> <label>Email:</label> {elem.Email}</li>
                                             <li key={elem.id}> <label>Phone Number:</label> {elem.PhoneNumber}</li>
-                                            <li key={elem.id}> <label>Amount Due:</label>{elem.AmountDue}</li>
-                                            <li key={elem.id}> <label>Due Date:</label>{elem.DueDate}</li>
+                                            <li key={elem.id}> <label>Amount Due:</label>{elem.AmountDue.toFixed(2)}</li>
+                                            <li key={elem.id}> <label>Due Date:</label>{elem.PaymentDueDate}</li>
                                             </>
                                         })}
                                     </ul>
@@ -117,8 +114,8 @@ export default class Home extends Component {
                                              return <> <li key={elem.id}> <label>Name:</label>  {elem.LastName}, {elem.FirstName} </li>
                                              <li key={elem.id}> <label>Email:</label> {elem.Email}</li>
                                             <li key={elem.id}> <label>Phone Number:</label> {elem.PhoneNumber}</li>
-                                            <li key={elem.id}> <label>Amount Due:</label>{elem.AmountDue}</li>
-                                            <li key={elem.id}> <label>Due Date:</label>{elem.DueDate}</li>
+                                            <li key={elem.id}> <label>Amount Due:</label>{elem.AmountDue.toFixed(2)}</li>
+                                            <li key={elem.id}> <label>Due Date:</label>{elem.PaymentDueDate}</li>
                                             </>
                                         })}
                                     </ul>
